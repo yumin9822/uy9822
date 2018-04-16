@@ -1,4 +1,5 @@
 # coding: utf-8
+# https://jiayi.space/post/zai-ubuntufu-wu-qi-shang-shi-yong-chrome-headless
 from selenium import webdriver
 
 chrome_options = webdriver.ChromeOptions()
