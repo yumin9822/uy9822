@@ -2,5 +2,5 @@
 	"kms": "http://kms.03k.org",
 	"oracle": "https://cnrpbteujz9p.compat.objectstorage.ap-seoul-1.oraclecloud.com/pub/",
 	"9822": "http://vps.ehsrr.com/dropbox/vps/script/",
-	"ubunutu20": "http://vps.ehsrr.com/dropbox/vps/script/ubuntu20.sh"
+	"ubuntu20": "http://vps.ehsrr.com/dropbox/vps/script/ubuntu20.sh"
 }
