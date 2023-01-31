@@ -12,7 +12,7 @@ addEventListener('fetch', event => {
 async function fetchAndApply(request) {
     let requestURL = new URL(request.url)
     let path = requestURL.pathname.slice(1)//获取访问的URL地址，取得的是第一个/之后的内容，如果访问 33.al/a 获取到a （默认忽略掉参数，也就是？之后的内容）
-    var url = "https://raw.githubusercontent.com/yumin9822/uy9822/master/url_redirector/redirect.json" // 远程数据，存放JSON文件
+    var url = "https://raw.githubusercontent.com/yumin9822/uy9822/master/url_redirector/redirect.json" // 远程数据，存放JSON文件 
     init = {
         method: "GET"
     };
