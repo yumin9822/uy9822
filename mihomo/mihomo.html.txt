@@ -1,0 +1,682 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mihomo Config Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js" type="20ffed537848995f9970b0c1-text/javascript"></script>
+  <!-- Google Fonts -->
+  <style type="text/css">@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto-mono/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto-mono/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto-mono/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto-mono/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto-mono/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:400;src:url(/cf-fonts/v/roboto-mono/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto-mono/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto-mono/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto-mono/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto-mono/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto-mono/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Roboto Mono;font-style:normal;font-weight:500;src:url(/cf-fonts/v/roboto-mono/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}</style>
+  <style>
+    :root {
+      --primary-color: #3B82F6;
+      --secondary-color: #60A5FA;
+      --bg-base: #F0F4F8;
+      --card-bg: #FFFFFF;
+      --text-main: #1F2937;
+      --text-muted: #4B5563;
+      --border-radius: 8px;
+      --card-padding: 1.25rem;
+      --gap: 1rem;
+      --transition: 0.2s ease-in-out;
+      --shadow-subtle: rgba(0, 0, 0, 0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      padding: var(--gap);
+      display: flex;
+      justify-content: center;
+    }
+    .wrapper { max-width: 900px; width: 100%; }
+    header { text-align: center; margin-bottom: calc(var(--gap) * 1.5); }
+    header h1 {
+      font-size: 2.25rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    header p {
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+    .container {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: var(--card-padding);
+      margin-bottom: var(--gap);
+      box-shadow: 0 2px 4px var(--shadow-subtle);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .container:hover {
+      box-shadow: 0 4px 8px var(--shadow-subtle);
+      transform: translateY(-2px);
+    }
+    .container h2 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    .container h3 {
+      font-size: 1.25rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+    label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-weight: 500; }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: var(--gap);
+      border: 1px solid #E5E7EB;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+    .button-group { display: flex; flex-wrap: wrap; gap: var(--gap); margin-bottom: var(--gap); }
+    button {
+      padding: 0.65rem 1.25rem;
+      background-color: var(--primary-color);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background-color var(--transition), box-shadow var(--transition);
+    }
+    button:hover { background-color: var(--secondary-color); box-shadow: 0 2px 6px var(--shadow-subtle); }
+    button:disabled { background-color: #93C5FD; cursor: not-allowed; }
+    .error { color: #EF4444; font-size: 0.9rem; margin-bottom: var(--gap); }
+    .list-grid { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
+    @media (min-width: 768px) { .list-grid { grid-template-columns: 1fr 1fr; } }
+    ul { list-style: none; padding-left: 0; }
+    li {
+      background-color: var(--bg-base);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.95rem;
+    }
+    .delete { cursor: pointer; color: #EF4444; font-weight: 600; }
+    #output-config {
+      font-family: 'Roboto Mono', monospace;
+      height: 260px;
+      padding: 0.75rem;
+      border: 1px solid #E5E7EB;
+      border-radius: var(--border-radius);
+      background-color: #FFFFFF;
+      resize: vertical;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Mihomo 配置生成器</h1>
+      <p>为您的网络体验定制专属节点和机场订阅</p>
+    </header>
+
+    <div class="flex">
+      <div class="container">
+        <h2>添加落地节点 (SS URI)</h2>
+        <label for="node-uri">SS URI</label>
+        <input type="text" id="node-uri" placeholder="ss://...#节点名称">
+        <div class="button-group">
+          <button onclick="if (!window.__cfRLUnblockHandlers) return false; addLandingNode()" data-cf-modified-20ffed537848995f9970b0c1-="">添加节点</button>
+        </div>
+        <div id="node-error" class="error"></div>
+      </div>
+
+      <div class="container">
+        <h2>添加机场订阅</h2>
+        <label for="provider-name">供应商名称</label>
+        <input type="text" id="provider-name" placeholder="示例: MyProvider">
+        <label for="provider-url">订阅 URL</label>
+        <input type="url" id="provider-url" placeholder="https://...">
+        <label for="provider-icon">图标 URL (可选)</label>
+        <input type="url" id="provider-icon" placeholder="https://...">
+        <div class="button-group">
+          <button onclick="if (!window.__cfRLUnblockHandlers) return false; addProvider()" data-cf-modified-20ffed537848995f9970b0c1-="">添加机场</button>
+        </div>
+        <div id="provider-error" class="error"></div>
+      </div>
+    </div>
+
+    <div id="added-items" class="container">
+      <h2>已添加项目</h2>
+      <div class="list-grid">
+        <div>
+          <h3>落地节点</h3>
+          <ul id="added-nodes-list"></ul>
+        </div>
+        <div>
+          <h3>机场订阅</h3>
+          <ul id="added-providers-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>生成 & 导出</h2>
+      <div class="button-group">
+        <button onclick="if (!window.__cfRLUnblockHandlers) return false; generateConfig()" data-cf-modified-20ffed537848995f9970b0c1-="">生成配置</button>
+        <button onclick="if (!window.__cfRLUnblockHandlers) return false; copyConfig()" id="copy-button" disabled data-cf-modified-20ffed537848995f9970b0c1-="">复制</button>
+        <button onclick="if (!window.__cfRLUnblockHandlers) return false; downloadConfig()" id="download-button" disabled data-cf-modified-20ffed537848995f9970b0c1-="">下载 YAML</button>
+      </div>
+      <div id="generate-error" class="error"></div>
+      <textarea id="output-config" readonly placeholder="在此查看生成的 YAML 配置..."></textarea>
+    </div>
+  </div>
+  <script type="20ffed537848995f9970b0c1-text/javascript">
+    // Store the base template configuration (Defaults Removed)
+    const baseConfigTemplate = `
+# Base Mihomo Configuration Template (Defaults Removed)
+proxies:
+# User-added landing nodes will appear here
+
+proxy-providers:
+# User-added providers will appear here
+
+# --- Standard Settings (Unchanged) ---
+mixed-port: 7893
+tcp-concurrent: true
+allow-lan: true
+ipv6: false
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+
+geodata-mode: true
+geox-url:
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
+  asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+
+profile: { store-selected: true, store-fake-ip: false }
+sniffer: { enable: true, sniff: { HTTP: { ports: [80], override-destination: true }, TLS: { ports: [443, 8443] }, QUIC: { ports: [443, 8443] } } }
+
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - any:53
+    - any:853
+
+dns:
+  proxy: true
+  enable: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.srv.nintendo.net"
+    - "*.stun.playstation.net"
+    - "xbox.*.microsoft.com"
+    - "*.xboxlive.com"
+    - "*.teafone.com"
+    - "*.sktswe.net"
+    - "rtc.goodfone.co.kr"
+    - "*.chattti.com"
+  fallback-filter:
+    ipcidr:
+      - 0.0.0.0/8
+      - 10.0.0.0/8
+      - 100.64.0.0/10
+      - 127.0.0.0/8
+      - 169.254.0.0/16
+      - 172.16.0.0/12
+      - 192.168.0.0/16
+      - 224.0.0.0/4
+      - 240.0.0.0/4
+      - 255.255.255.255/32
+      - ::/128
+      - ::1/128
+      - ::ffff:0:0/96
+      - 64:ff9b::/96
+      - 100::/64
+      - 2001::/32
+      - 2001:20::/28
+      - 2001:db8::/32
+      - 2002::/16
+      - fc00::/7
+      - fe80::/10
+      - ff00::/8
+      
+  default-nameserver:
+    - 223.5.5.5  
+    - 119.29.29.29
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+    - tls://119.29.29.29:853
+  nameserver:
+   - 'https://dns.google/dns-query#proxy'
+   - 'tls://8.8.8.8:853#proxy'
+  nameserver-policy:
+   "geosite:cn":
+    - https://223.5.5.5/dns-query      - tls://223.5.5.5:853
+    - https://doh.pub/dns-query
+    - tls://119.29.29.29:853
+    - tls://114.114.114.114:853
+    - tls://dot.360.cn:853
+    - https://doh.360.cn/dns-query
+
+
+# --- Anchors (Unchanged) ---
+# url-test: &url-test {type: url-test, url: http://1.1.1.1/generate_204, interval: 300, tolerance: 50}
+c: &c {type: http, behavior: classical, format: text, interval: 86400}
+
+proxy-groups:
+# NOTE: Individual provider groups are removed.
+# The script will auto-create groups for providers you add, using custom icons if provided.
+
+# --- Core Selector Groups (Defaults Removed) ---
+  - name: 机场选择 # Airport Selector - Will be updated with new providers
+    type: select
+    proxies:
+      # New Provider Group Names will be added here by script
+    icon:  https://raw.githubusercontent.com/cc63/ICON/main/icons/Linkeless.png
+
+  - name: 落地选择 # Landing Node Selector - Will be updated with new nodes
+    type: select
+    proxies:
+      # New Landing Node names will be added here by script
+    icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/applesafari.png
+
+# --- Policy Groups ---
+# NOTE: User-added landing nodes will be automatically added to these groups by the script.
+  - name: 国外网站
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+  - name: 国际媒体
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+  - name: 苹果服务
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png
+  - name: 微软服务
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+  - name: 谷歌服务
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon:  https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+  - name: 电报消息
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+  - name: 推特消息
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
+  - name: AI
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
+  - name: 游戏平台
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  - name: Emby
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png
+  - name: Spotify
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+  - name: 兜底分流 # Fallback group
+    type: select
+    proxies: [落地选择, 机场选择, DIRECT]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+
+# --- Rule Providers (Unchanged) ---
+rule-providers:
+  AD: {<<: *c, path: ./rules/AD.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list}
+  Apple: {<<: *c, path: ./rules/Apple.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list}
+  YouTube: {<<: *c, path: ./rules/YouTube.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list}
+  Google: {<<: *c, path: ./rules/Google.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list}
+  Telegram: {<<: *c, path: ./rules/Telegram.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Telegram.list}
+  Twitter: {<<: *c, path: ./rules/Twitter.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list}
+  Steam: {<<: *c, path: ./rules/Steam.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Steam.list}
+  Epic: {<<: *c, path: ./rules/Epic.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list}
+  AI: {<<: *c, path: ./rules/AI.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list}
+  Emby: {<<: *c, path: ./rules/Emby.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list}
+  Spotify: {<<: *c, path: ./rules/Spotify.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Spotify.list}
+  Bahamut: {<<: *c, path: ./rules/Bahamut.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Bahamut.list}
+  Netflix: {<<: *c, path: ./rules/Netflix.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Netflix.list}
+  Disney: {<<: *c, path: ./rules/Disney.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Disney.list}
+  PrimeVideo: {<<: *c, path: ./rules/PrimeVideo.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/PrimeVideo.list}
+  HBO: {<<: *c, path: ./rules/HBO.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/HBO.list}
+  TikTok: {<<: *c, path: ./rules/TikTok.list, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/TikTok.list}
+
+# --- Rules (Unchanged) ---
+rules:
+  - RULE-SET,AD,REJECT
+  - RULE-SET,AI,AI
+  - RULE-SET,Apple,苹果服务
+  - RULE-SET,YouTube,谷歌服务
+  - RULE-SET,Google,谷歌服务
+  - RULE-SET,Telegram,电报消息
+# - PROCESS-NAME,Telegram,REJECT-DROP # For Telegram macOS
+  - RULE-SET,Twitter,推特消息
+  - RULE-SET,Steam,游戏平台
+  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Emby,Emby
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Bahamut,国际媒体
+  - RULE-SET,Netflix,国际媒体
+  - RULE-SET,Disney,国际媒体
+  - RULE-SET,PrimeVideo,国际媒体
+  - RULE-SET,HBO,国际媒体
+  - RULE-SET,TikTok,国际媒体
+  - GEOSITE,onedrive,微软服务
+  - GEOSITE,github,微软服务
+  - GEOSITE,microsoft,微软服务
+  - GEOSITE,gfw,国外网站
+  - GEOIP,private,DIRECT
+  - GEOIP,cn,DIRECT
+  - GEOSITE,cn,DIRECT
+  - MATCH,兜底分流
+    `;
+
+    // In-memory storage for added items
+    let addedLandingNodes = [];
+    let addedProviders = []; // Stores { name: '...', url: '...', icon: '...' }
+
+    // DOM Elements
+    const nodeUriInput = document.getElementById('node-uri');
+    const nodeErrorSpan = document.getElementById('node-error');
+    const providerNameInput = document.getElementById('provider-name');
+    const providerUrlInput = document.getElementById('provider-url');
+    const providerIconInput = document.getElementById('provider-icon');
+    const providerErrorSpan = document.getElementById('provider-error');
+    const addedNodesList = document.getElementById('added-nodes-list');
+    const addedProvidersList = document.getElementById('added-providers-list');
+    const outputConfigTextarea = document.getElementById('output-config');
+    const generateErrorSpan = document.getElementById('generate-error');
+    const copyButton = document.getElementById('copy-button');
+    const downloadButton = document.getElementById('download-button');
+
+    // --- Functions ---
+
+    function clearErrors() {
+        nodeErrorSpan.textContent = '';
+        providerErrorSpan.textContent = '';
+        generateErrorSpan.textContent = '';
+    }
+
+    function updateAddedItemsUI() {
+        addedNodesList.innerHTML = '';
+        addedLandingNodes.forEach(node => {
+            const li = document.createElement('li');
+            li.textContent = `${node.name} (${node.type} @ ${node.server}:${node.port}${node.plugin ? ' w/ ' + node.plugin : ''})`;
+            addedNodesList.appendChild(li);
+        });
+        addedProvidersList.innerHTML = '';
+        addedProviders.forEach(provider => {
+            const li = document.createElement('li');
+            let text = `${provider.name} (${provider.url})`;
+            if (provider.icon) { text += ` [Icon: ${provider.icon}]`; }
+            li.textContent = text;
+            addedProvidersList.appendChild(li);
+        });
+    }
+
+    function parseSsUri(uriString) {
+        // This function remains unchanged
+        if (!uriString || !uriString.startsWith('ss://')) throw new Error('Invalid URI: Must start with ss://');
+        const uri = uriString.substring(5);
+        let name = '';
+        let mainPart = uri;
+        const hashIndex = uri.indexOf('#');
+        if (hashIndex !== -1) {
+            try { name = decodeURIComponent(uri.substring(hashIndex + 1)); } catch (e) { name = uri.substring(hashIndex + 1); }
+            mainPart = uri.substring(0, hashIndex);
+        }
+        const atIndex = mainPart.indexOf('@');
+        if (atIndex === -1) throw new Error('Invalid URI: Missing "@" separator.');
+        const credentialsPart = mainPart.substring(0, atIndex);
+        const serverPart = mainPart.substring(atIndex + 1);
+        let server = '';
+        let port = NaN;
+        let pluginString = '';
+        const questionIndex = serverPart.indexOf('?');
+        let serverAndPort = serverPart;
+        if (questionIndex !== -1) {
+            pluginString = serverPart.substring(questionIndex + 1);
+            serverAndPort = serverPart.substring(0, questionIndex);
+        }
+        const lastColonIndex = serverAndPort.lastIndexOf(':');
+        if (lastColonIndex === -1) throw new Error('Invalid URI: Missing port.');
+        server = serverAndPort.substring(0, lastColonIndex);
+        if (server.startsWith('[') && server.endsWith(']')) server = server.substring(1, server.length - 1);
+        port = parseInt(serverAndPort.substring(lastColonIndex + 1), 10);
+        if (isNaN(port) || port <= 0 || port > 65535) throw new Error(`Invalid URI: Invalid port "${serverAndPort.substring(lastColonIndex + 1)}".`);
+        if (!name) name = `SS ${server}:${port}`;
+        let cipher = '';
+        let password = '';
+        try {
+            const decodedCreds = atob(credentialsPart);
+            const firstColonIndex = decodedCreds.indexOf(':');
+            if (firstColonIndex === -1) throw new Error('Invalid credentials format (missing colon).');
+            cipher = decodedCreds.substring(0, firstColonIndex);
+            password = decodedCreds.substring(firstColonIndex + 1);
+        } catch (e) { throw new Error(`Invalid URI: Failed to decode credentials (${e.message}).`); }
+        if (!cipher || !password) throw new Error('Invalid URI: Empty cipher or password after decoding.');
+        let plugin = null;
+        let pluginOpts = null;
+        if (pluginString) {
+            try {
+                const params = new URLSearchParams(pluginString.replace(/;/g, '&'));
+                if (params.has('plugin')) {
+                    plugin = params.get('plugin');
+                    pluginOpts = {};
+                    if (plugin === 'simple-obfs') {
+                        if (params.has('obfs')) pluginOpts.mode = params.get('obfs');
+                        if (params.has('obfs-host')) pluginOpts.host = params.get('obfs-host');
+                    } else {
+                        params.forEach((value, key) => { if (key !== 'plugin') pluginOpts[key] = value; });
+                    }
+                    if (Object.keys(pluginOpts).length === 0) pluginOpts = null;
+                }
+            } catch (e) { console.warn("Failed to parse plugin string:", e); }
+        }
+        const proxy = {
+            name: name, type: 'ss', server: server, port: port, cipher: cipher, password: password, udp: true,
+            ...(plugin && { plugin: plugin }), ...(pluginOpts && { 'plugin-opts': pluginOpts }),
+            'dialer-proxy': '机场选择'
+        };
+        return proxy;
+    }
+
+    function addLandingNode() {
+        // This function remains unchanged
+        clearErrors();
+        const uri = nodeUriInput.value.trim();
+        if (!uri) { nodeErrorSpan.textContent = 'Please enter an SS URI.'; return; }
+        try {
+            const newNode = parseSsUri(uri);
+            if (addedLandingNodes.some(n => n.name === newNode.name)) {
+                nodeErrorSpan.textContent = `Node name "${newNode.name}" already exists. Try renaming using the # part of the URI.`;
+                return;
+            }
+            addedLandingNodes.push(newNode);
+            updateAddedItemsUI();
+            nodeUriInput.value = '';
+        } catch (e) {
+            console.error("Error parsing SS URI:", e);
+            nodeErrorSpan.textContent = `Error parsing URI: ${e.message}`;
+        }
+    }
+
+    function addProvider() {
+        // This function remains unchanged
+        clearErrors();
+        const name = providerNameInput.value.trim();
+        const url = providerUrlInput.value.trim();
+        const iconUrl = providerIconInput.value.trim();
+        if (!name || !url) { providerErrorSpan.textContent = 'Please fill in Provider Name and Subscription URL.'; return; }
+        try { new URL(url); } catch (_) { providerErrorSpan.textContent = 'Invalid Subscription URL format.'; return; }
+        if (iconUrl) { try { new URL(iconUrl); } catch (_) { providerErrorSpan.textContent = 'Invalid Icon URL format.'; return; } }
+        if (addedProviders.some(p => p.name === name)) { providerErrorSpan.textContent = `Provider name "${name}" already exists.`; return; }
+        addedProviders.push({ name, url, icon: iconUrl });
+        updateAddedItemsUI();
+        providerNameInput.value = '';
+        providerUrlInput.value = '';
+        providerIconInput.value = '';
+    }
+
+    function generateConfig() {
+        // **** UPDATED Section ****
+        clearErrors();
+        outputConfigTextarea.value = '';
+        copyButton.disabled = true;
+        downloadButton.disabled = true;
+
+        try {
+            const config = jsyaml.load(baseConfigTemplate);
+            if (!config.proxies) config.proxies = [];
+            if (!config['proxy-providers']) config['proxy-providers'] = {};
+            if (!config['proxy-groups']) config['proxy-groups'] = [];
+
+            // Add User Proxies
+            addedLandingNodes.forEach(node => { config.proxies.push(node); });
+
+            // Add User Proxy Providers (definition)
+            addedProviders.forEach(provider => {
+                config['proxy-providers'][provider.name] = {
+                    type: 'http', url: provider.url,
+                    path: `./providers/${provider.name.replace(/[^a-zA-Z0-9]/g, '_')}.yaml`,
+                    interval: 3600, 'vehicle-type': 'http',
+                    'health-check': { enable: true, url: 'http://www.gstatic.com/generate_204', interval: 300 }
+                };
+            });
+
+            // --- Rebuild/Update Proxy Groups ---
+            const allLandingNodeNames = config.proxies.map(p => p.name);
+            const allProviderKeys = Object.keys(config['proxy-providers']);
+            const allProviderGroupNames = [];
+
+            // Create groups for added providers, including custom icons
+            allProviderKeys.forEach(providerKey => {
+                 const newProviderGroupName = providerKey;
+                 const originalProviderData = addedProviders.find(p => p.name === providerKey);
+                 const customIcon = originalProviderData ? originalProviderData.icon : null;
+                 if (!config['proxy-groups'].some(g => g.name === newProviderGroupName)) {
+                      const groupDefinition = { name: newProviderGroupName, type: 'select', use: [providerKey] };
+                      if (customIcon) { groupDefinition.icon = customIcon; } // Icon is optional
+                      config['proxy-groups'].push(groupDefinition);
+                 }
+                 allProviderGroupNames.push(newProviderGroupName);
+            });
+
+            // Update main selector groups
+            let airportSelectorGroup = config['proxy-groups'].find(g => g.name === '机场选择');
+            if (!airportSelectorGroup) {
+                 airportSelectorGroup = { name: '机场选择', type: 'select', proxies: [], icon: 'https://raw.githubusercontent.com/cc63/ICON/main/icons/Linkeless.png'};
+                 config['proxy-groups'].push(airportSelectorGroup);
+            }
+            airportSelectorGroup.proxies = [...allProviderGroupNames];
+
+            let landingSelectorGroup = config['proxy-groups'].find(g => g.name === '落地选择');
+            if (!landingSelectorGroup) {
+                 landingSelectorGroup = { name: '落地选择', type: 'select', proxies: [], icon: 'https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/applesafari.png'};
+                 config['proxy-groups'].push(landingSelectorGroup);
+            }
+            landingSelectorGroup.proxies = [...allLandingNodeNames];
+
+            // **** NEW: Add landing nodes to policy groups ****
+            const policyGroupNames = [
+                 '国外网站', '国际媒体', '苹果服务', '微软服务', '谷歌服务',
+                 '电报消息', '推特消息', 'AI', '游戏平台', 'Emby', 'Spotify', '兜底分流'
+            ];
+
+            config['proxy-groups'].forEach(group => {
+                // Check if it's one of the policy groups
+                if (policyGroupNames.includes(group.name)) {
+                     // Ensure proxies list exists
+                     if (!group.proxies) group.proxies = [];
+                      // Ensure it's an array
+                     if (!Array.isArray(group.proxies)) group.proxies = [];
+
+                     // Add each landing node name if it's not already present
+                     allLandingNodeNames.forEach(nodeName => {
+                         if (!group.proxies.includes(nodeName)) {
+                             group.proxies.push(nodeName); // Add to the end
+                         }
+                     });
+
+                     // Optional: Ensure standard selectors are present (already done by template, but safe)
+                      if (!group.proxies.includes('落地选择')) group.proxies.unshift('落地选择');
+                      if (!group.proxies.includes('机场选择')) group.proxies.splice(1, 0, '机场选择');
+                      if (!group.proxies.includes('DIRECT') && group.name !== 'AI') { // AI group might not need DIRECT
+                         if (!group.proxies.includes('DIRECT')) group.proxies.splice(2,0,'DIRECT');
+                      }
+                      group.proxies = [...new Set(group.proxies)]; // Remove duplicates
+                }
+            });
+            // **** END of NEW Section ****
+
+
+            const outputYaml = jsyaml.dump(config, { indent: 2, noRefs: true });
+            outputConfigTextarea.value = outputYaml;
+            copyButton.disabled = false;
+            downloadButton.disabled = false;
+
+        } catch (e) {
+            console.error("Error generating configuration:", e);
+            generateErrorSpan.textContent = `Error generating YAML: ${e.message}`;
+        }
+    }
+
+    function copyConfig() { /* Unchanged */
+        if (!outputConfigTextarea.value) return;
+        navigator.clipboard.writeText(outputConfigTextarea.value)
+            .then(() => {
+                const originalText = copyButton.textContent;
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => { copyButton.textContent = originalText; }, 1500);
+            })
+            .catch(err => {
+                console.error('Failed to copy text: ', err);
+                generateErrorSpan.textContent = 'Failed to copy to clipboard.';
+            });
+    }
+
+    function downloadConfig() { /* Unchanged */
+        if (!outputConfigTextarea.value) return;
+        const blob = new Blob([outputConfigTextarea.value], { type: 'text/yaml;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'custom_mihomo_config.yaml';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+    }
+
+  </script>
+ <script src="https://fastly.jsdelivr.net/gh/yumin9822/uy9822@master/mihomo/rocket-loader.min.js" data-cf-settings="20ffed537848995f9970b0c1-|49" defer></script></body>
+</html>
