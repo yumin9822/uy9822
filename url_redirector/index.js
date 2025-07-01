@@ -5,6 +5,7 @@
 * @Last Modified by:   yumu
 * @Last Modified time: 2020-03-26
 * Enhanced to support path concatenation
+* Manually triggered deploy
 */
 
 addEventListener('fetch', event => {
