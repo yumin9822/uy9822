@@ -17,7 +17,10 @@ async function fetchAndApply(request) {
     let fullPath = requestURL.pathname.slice(1) // 获取完整路径，去掉开头的 /
     
     // 远程数据，存放JSON文件 
-    var configUrl = "https://fastly.jsdelivr.net/gh/yumin9822/uy9822@master/url_redirector/redirect.json"
+    // var configUrl = "https://fastly.jsdelivr.net/gh/yumin9822/uy9822@master/url_redirector/redirect.json"
+    // var configUrl = "https://ghfast.top/https://raw.githubusercontent.com/yumin9822/uy9822/master/url_redirector/redirect.json"
+    // var configUrl = "https://edgeone.gh-proxy.com/https://raw.githubusercontent.com/yumin9822/uy9822/master/url_redirector/redirect.json"
+    var configUrl = "https://hk.gh-proxy.com/https://raw.githubusercontent.com/yumin9822/uy9822/master/url_redirector/redirect.json"
     
     const init = {
         method: "GET"
