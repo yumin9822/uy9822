@@ -2,6 +2,6 @@
 	"kms": "http://kms.03k.org",
 	"123": "https://vip.123pan.cn/1743020/public/",
 	"oracle": "https://cnrpbteujz9p.compat.objectstorage.ap-seoul-1.oraclecloud.com/pub/",
-	"9822": "http://vps.ehsrr.com/dropbox/vps/script/",
-	"ubuntu20": "http://vps.ehsrr.com/dropbox/vps/script/ubuntu20.sh"
+	"9822": "https://vps.ehsrr.com/script/",
+	"ubuntu20": "https://vps.ehsrr.com/script/ubuntu20.sh"
 }
